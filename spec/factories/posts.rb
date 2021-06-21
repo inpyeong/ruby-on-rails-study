@@ -7,6 +7,7 @@
 #  body       :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint           not null
 #
 FactoryBot.define do
   factory :post do

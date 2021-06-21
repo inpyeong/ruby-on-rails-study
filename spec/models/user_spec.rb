@@ -12,9 +12,17 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)      not null
 #  admin                  :boolean          default(FALSE)
+#  token                  :string(255)
 #
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#validation' do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+  end
+
+  describe '#association' do
+    it { should have_many(:posts).dependent(:destroy) }
+  end
 end

@@ -11,6 +11,6 @@ RSpec.describe "Sessions", type: :system do
     fill_in 'user_email', with: @user.email
     fill_in 'user_password', with: @user.password
     click_button 'Log in'
-    expect(page).to have_text('Pages#show')
+    expect(page).to have_text('Posts')
   end
 end

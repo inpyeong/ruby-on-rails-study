@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)      not null
 #  admin                  :boolean          default(FALSE)
+#  token                  :string(255)
 #
 FactoryBot.define do
   factory :user do

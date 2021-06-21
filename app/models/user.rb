@@ -12,10 +12,23 @@
 #  updated_at             :datetime         not null
 #  name                   :string(255)      not null
 #  admin                  :boolean          default(FALSE)
+#  token                  :string(255)
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
+
+  validates :name, presence: true
+
+  has_many :posts, dependent: :destroy
+
+  before_create :create_token
+
+  private
+
+  def create_token
+    self.token = SecureRandom.uuid
+  end
 end
